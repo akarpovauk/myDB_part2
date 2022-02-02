@@ -17,10 +17,38 @@
 const movieDB = {
     movies: [
         "Логан",
-        "Лига справедливости",
+        "Aига справедливости",
         "Ла-ла лэнд",
         "Одержимость",
         "Скотт Пилигрим против..."
     ]
 };
+
+const adv = document.querySelectorAll('.promo__adv > img'),
+      bg = document.querySelector('.promo__bg'),
+      genre = bg.querySelector('.promo__genre'),
+      movieList = document.querySelector('.promo__interactive-list'),
+      filmItems = document.querySelectorAll('.promo__interactive li');
+
+adv.forEach (item => {
+    item.remove();
+});
+
+genre.textContent = 'драма';
+
+bg.style.backgroundImage = 'url("img/bg.jpg")';
+
+movieList.innerHTML ="";
+
+movieDB.movies.sort();
+
+movieDB.movies.forEach ((film, i) => {
+    movieList.innerHTML += `
+        <li class="promo__interactive-item">${i+1} ${film}
+            <div class="delete"></div>
+        </li>
+    `;
+});
+
+
 
